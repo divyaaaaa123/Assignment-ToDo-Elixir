@@ -12,7 +12,8 @@ This project has been developed using the following technologies:
 
 
 # OUTPUT
-![1](https://user-images.githubusercontent.com/47104889/207656929-f44a1735-4cde-485f-a667-3696eb01e987.jpg)
+![image](https://user-images.githubusercontent.com/47104889/207807020-55535943-5169-4bb7-85d1-f6b446b1435e.png)
+
 
 1. Adding Tasks
 ![image](https://user-images.githubusercontent.com/47104889/207657382-b059394b-872e-4c3f-b137-1fc695cf5269.png)
