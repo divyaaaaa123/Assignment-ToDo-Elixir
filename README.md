@@ -4,7 +4,7 @@ This is an example application that shows how to use Cowboy 1.0 in conjunction w
 
 This project has been developed using the following technologies:
 1. Elixir 1.14
-2. Cowboy 2.0
+2. Plug - Cowboy 2.0
 3. Ecto  3.1
 4. Postgresql
 5. HTML 5
