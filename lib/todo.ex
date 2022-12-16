@@ -1,6 +1,5 @@
-
- import Ecto.Query
-
+import Ecto.Changeset
+import Ecto.Query
 defmodule Todo do
   def add(task) do
     add_task = %Todo.Schema{task: task}
@@ -23,7 +22,7 @@ defmodule Todo do
       ])
   end
   def show_task() do
-    if length(null())==0 do
+    if length(null()) ==0 do
       list()
     end
     query = from task in Todo.Schema ,
@@ -34,7 +33,7 @@ defmodule Todo do
 
   end
   def show_id() do
-    if length(null())==0 do
+    if length(null()) == 0 do
       list()
     end
     query = from task in Todo.Schema ,
@@ -50,6 +49,19 @@ defmodule Todo do
     |> Todo.Repo.delete()
 
   end
+  def validation(task , params \\ %{}) do
+    task
+    |> Ecto.Changeset.cast(params , [:task])
+    |> Ecto.Changeset.validate_required([:task])
+  end
 
+  def update_task(id,task) do
+
+    prev_task= Todo.Schema|> Todo.Repo.get(id)
+    prev_task
+    |> validation(%{task: task})
+    |> Todo.Repo.update()
+
+  end
 
 end

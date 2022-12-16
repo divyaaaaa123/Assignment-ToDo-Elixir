@@ -21,8 +21,11 @@ defmodule Todo.Plug do
   get "/delete" do
     conn = Plug.Conn.fetch_query_params(conn)
  		id = Map.fetch!(conn.params, "delete_data")
-    IO.puts("#{id}")
-    delete_task(id)
+     if length(null()) > 4 do
+      delete_task(id)
+    else
+      update_task(id,"Add New Task ")
+    end
     body=EEx.eval_file "lib/todo/main.eex",[tsk: show_task(),ids: show_id()]
     send_resp(conn, 200, body)
 
