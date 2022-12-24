@@ -2,45 +2,9 @@ import Ecto.Changeset
 import Ecto.Query
 defmodule Todo do
   def add(task) do
-    add_task = %Todo.Schema{task: task}
+    add_task = %Todo.Schema{task: task,done: "incomplete"}
   Todo.Repo.insert(add_task)
-  end
 
-  def null() do
-    query = from task in Todo.Schema ,
-          select: task
-    _data=Todo.Repo.all(query)
-    #IO.inspect(data)
-  end
-  def list() do
-      Todo.Repo.insert_all(Todo.Schema,[
-        %{task: "Add New Task " },
-        %{task: "Add New Task " },
-        %{task: "Add New Task " },
-        %{task: "Add New Task " }
-
-      ])
-  end
-  def show_task() do
-    if length(null()) ==0 do
-      list()
-    end
-    query = from task in Todo.Schema ,
-          select: task
-    data=Todo.Repo.all(query)
-    tasks = data|> Enum.map(&(&1.task))
-    _reverse_tasks=Enum.take(tasks, -4)
-
-  end
-  def show_id() do
-    if length(null()) == 0 do
-      list()
-    end
-    query = from task in Todo.Schema ,
-          select: task
-    data=Todo.Repo.all(query)
-    ids = data|> Enum.map(&(&1.id))
-    _reverse_ids=Enum.take(ids, -4)
   end
 
 
@@ -49,19 +13,44 @@ defmodule Todo do
     |> Todo.Repo.delete()
 
   end
-  def validation(task , params \\ %{}) do
+
+  def get_all_tasks() do
+    query = from task in Todo.Schema, order_by: [desc: task.id]
+    Todo.Repo.all(query)
+  end
+  def changeset(task , params \\ %{}) do
     task
-    |> Ecto.Changeset.cast(params , [:task])
-    |> Ecto.Changeset.validate_required([:task])
+    |> Ecto.Changeset.cast(params , [:task,:done])
+    |> Ecto.Changeset.validate_required([:task , :done])
   end
 
-  def update_task(id,task) do
-
-    prev_task= Todo.Schema|> Todo.Repo.get(id)
+  def update( id ,task) do
+    prev_task = Todo.Schema |> Todo.Repo.get(id)
     prev_task
-    |> validation(%{task: task})
+    |> changeset(%{task: task})
     |> Todo.Repo.update()
-
+  end
+  def toggle_status(id,status) do
+    prev_task=Todo.Schema |> Todo.Repo.get(id)
+    if status=="complete" do
+        prev_task
+        |> changeset(%{done: "incomplete"})
+        |> Todo.Repo.update()
+    else
+        prev_task
+        |> changeset(%{done: "complete"})
+        |> Todo.Repo.update()
+    end
+  end
+  def active() do
+    query= from task in Todo.Schema,
+            where: task.done == "incomplete"
+    Todo.Repo.all(query)
+  end
+  def completed() do
+    query= from task in Todo.Schema,
+            where: task.done == "complete"
+    Todo.Repo.all(query)
   end
 
 end

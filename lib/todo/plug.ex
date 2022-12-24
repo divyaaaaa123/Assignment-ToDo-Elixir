@@ -6,7 +6,7 @@ defmodule Todo.Plug do
   plug :match
   plug :dispatch
   get "/" do
-    body=EEx.eval_file "lib/todo/main.eex",[tsk: show_task(),ids: show_id()]
+    body=EEx.eval_file "lib/todo/main.html.leex"
     send_resp(conn, 200, body)
   end
   get "/add" do
@@ -14,22 +14,60 @@ defmodule Todo.Plug do
  		task = Map.fetch!(conn.params, "data")
     add(task)
     IO.puts("#{task}")
-    body=EEx.eval_file "lib/todo/main.eex",[tsk: show_task(),ids: show_id()]
+    body=EEx.eval_file "lib/todo/main.html.leex"
     send_resp(conn, 200, body)
 
   end
   get "/delete" do
     conn = Plug.Conn.fetch_query_params(conn)
  		id = Map.fetch!(conn.params, "delete_data")
-     if length(null()) > 4 do
+
       delete_task(id)
-    else
-      update_task(id,"Add New Task ")
-    end
-    body=EEx.eval_file "lib/todo/main.eex",[tsk: show_task(),ids: show_id()]
+
+    body=EEx.eval_file "lib/todo/main.html.leex"
     send_resp(conn, 200, body)
 
   end
+  get "/active" do
+    conn = Plug.Conn.fetch_query_params(conn)
+ 		_task = Map.fetch!(conn.params, "active")
+    active()
+    body=EEx.eval_file "lib/todo/main.html.leex"
+    send_resp(conn, 200, body)
+
+  end
+  get "/completed" do
+    conn = Plug.Conn.fetch_query_params(conn)
+ 		_task = Map.fetch!(conn.params, "completed")
+    completed()
+    body=EEx.eval_file "lib/todo/main.html.leex"
+    send_resp(conn, 200, body)
+
+  end
+  get "/toggle" do
+    conn = Plug.Conn.fetch_query_params(conn)
+ 		id = Map.fetch!(conn.params, "id")
+    status = Map.fetch!(conn.params, "status")
+    toggle_status(id,status)
+    body=EEx.eval_file "lib/todo/main.html.leex"
+    send_resp(conn, 200, body)
+  end
+  get "/edit" do
+		conn = Plug.Conn.fetch_query_params(conn)
+		id = (Map.fetch!(conn.params, "id"))
+		task = to_string(Map.fetch!(conn.params, "updatedtask"))
+		body=EEx.eval_file("lib/todo/update.html.leex", [id: id , updatedtask: task])
+    send_resp(conn, 200, body)
+	end
+
+	get "/store" do
+		conn = Plug.Conn.fetch_query_params(conn)
+		id = (Map.fetch!(conn.params, "id"))
+		task = to_string(Map.fetch!(conn.params, "updatedtask"))
+    update(id , task)
+		body=EEx.eval_file("lib/todo/main.html.leex")
+    send_resp(conn, 200, body)
+	end
   match _ do
     send_resp(conn, 404, "404 Error Not found")
   end

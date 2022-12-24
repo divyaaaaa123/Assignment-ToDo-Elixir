@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #e7b0f6ca;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    height: 100%;
+}
+
+.main {
+    margin: 70px auto;
+    padding: 35px 50px 50px;
+    max-width: 500px;
+    background: #DA70D6;
+    color: #FFF;
+    box-shadow: -20px -20px 0px 0px rgb(100 100 100 / 10%);
+}
+
+.main h2 {
+
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #fff;
+
+}
+
+.main ul {
+    margin-top: 30px;
+    list-style: none;
+}
+
+.main h2 span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-left: 3px;
+    margin-top: 4px;
+
+}
+
+form {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form label {
+
+    min-width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+form input,
+form button {
+    font-family: 'Quicksand', sans-serif;
+    height: 50px;
+}
+
+form input {
+    flex-grow: 1;
+    border: none;
+    background: #f7f1f1;
+    padding: 0 24px;
+    font-size: initial;
+}
+
+form button {
+    background: #FF6666;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 24px;
+    border: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,.3);
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 10px;
+
+}
+
+#list li {
+    display: flex;
+    margin: 0 -52px 4px;
+    padding: 20px 52px;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+}
+
+#list li.done {
+    text-decoration: line-through;
+}
+
+.togglebutton-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.togglebutton-label {
+    padding-right: 15px;
+}
+
+.todo-sort {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.todo-sort input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+#btn{
+    margin-top:-55px;
+}
+.intuative-checkbox input[type="checkbox"],
+.intuative-checkbox input[type="checkbox"]:checked + label {
+	opacity: .8;
+	text-decoration: line-through;
+}
+
+
+.fcc-btn {
+  background-color: #FF6666;
+  color: white;
+  font-size: 10px;
+  padding: 7px 15px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.3);
+
+}
+li{
+    margin-botton:10px;
+}
+a[type=button]{
+    background-color: #FF6666;
+  color: white;
+  font-size: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.3);
+
+}
+.tab-wrap {
+  transition: 0.3s box-shadow ease;
+  border-radius: 6px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  list-style: none;
+  background-color: #fff;
+  margin: 40px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.tab-wrap:hover {
+  box-shadow: 0 12px 23px rgba(0, 0, 0, 0.23), 0 10px 10px rgba(0, 0, 0, 0.19);
+}
+
+.tab {
+  display: none;
+}
+.tab:checked:nth-of-type(1) ~ .tab__content:nth-of-type(1) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(2) ~ .tab__content:nth-of-type(2) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(3) ~ .tab__content:nth-of-type(3) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(4) ~ .tab__content:nth-of-type(4) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(5) ~ .tab__content:nth-of-type(5) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:first-of-type:not(:last-of-type) + label {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.tab:not(:first-of-type):not(:last-of-type) + label {
+  border-radius: 0;
+}
+.tab:last-of-type:not(:first-of-type) + label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.tab:checked + label {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 #fff inset;
+  cursor: default;
+}
+.tab:checked + label:hover {
+  box-shadow: 0 -1px 0 #fff inset;
+  background-color: #fff;
+}
+.tab + label {
+  box-shadow: 0 -1px 0 #eee inset;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: #333;
+  flex-grow: 3;
+  text-align: center;
+  background-color: #f2f2f2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-align: center;
+  transition: 0.3s background-color ease, 0.3s box-shadow ease;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.tab + label:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 0 #f4f4f4 inset;
+}
+.tab__content {
+  padding: 10px 25px;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+  left: 0;
+  transform: translateY(-3px);
+  border-radius: 6px;
+}
+
+::placeholder {
+  font-size: 10px;
+}
+</style>
+
+</head>
+<body>
+<div class="main">
+ <h2> D's ToDo List</h2>
+
+<div class="container">
+
+  <div class="tab-wrap">
+
+    <!-- active tab on page load gets checked attribute -->
+    <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+    <label for="tab1">All</label>
+
+    <input type="radio" id="tab2" name="tabGroup1" class="tab">
+    <label for="tab2">Active</label>
+
+    <input type="radio" id="tab3" name="tabGroup1" class="tab">
+    <label for="tab3">Completed</label>
+
+    <div class="tab__content">
+      <span>Today I need to :</span>
+
+			  <div id="tasks">
+ <%= for task <- Todo.get_all_tasks do %>
+
+
+        <div class="btn-group" role="group" aria-label="Basic example" >
+        <%= if task.done == "incomplete" do %>
+        <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
+        <%= else %>
+        <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; text-decoration: line-through;color: black;"><b><%=task.task %></b></a>
+        <%= end %>
+
+
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
+
+
+					 <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;">Edit task</a>
+
+
+</div>
+<br>
+              <% end %>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="tab__content">
+    <div id="tasks">
+ <%= for task <- Todo.active do %>
+
+
+        <div class="btn-group" role="group" aria-label="Basic example" >
+
+        <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
+
+
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
+  <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;">Edit task</a>
+
+
+</div>
+<br>
+              <% end %>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="tab__content">
+
+<div id="tasks">
+ <%= for task <- Todo.completed do %>
+
+
+        <div class="btn-group" role="group" aria-label="Basic example" >
+
+        <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
+
+
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
+
+
+
+</div>
+<br>
+              <% end %>
+              </div>
+
+  </div>
+
+
+
+
+
+
+        <form name="form" action="add" method="get">
+            <label for="inputtask">Add to the todo list</label>
+            <input id="inputtask" name="data" type="text" placeholder="Add items to Todo list">
+            <button id="addbutton" type="submit">Add Item</button>
+        </form>
+
+
+    </div>
+
+<center><p>@Divya Mogaveera</p></center>
+
+
+</body>
+</html>

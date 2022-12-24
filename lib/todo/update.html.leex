@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+	* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #e7b0f6ca;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    height: 100%;
+}
+
+#todo-list {
+    margin: 70px auto;
+    padding: 35px 50px 50px;
+    max-width: 500px;
+    background: #DA70D6;
+    color: #FFF;
+    box-shadow: -20px -20px 0px 0px rgb(100 100 100 / 10%);
+}
+
+#todo-list h2 {
+
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #fff;
+
+}
+
+#todo-list ul {
+    margin-top: 30px;
+    list-style: none;
+}
+
+#todo-list h2 span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-left: 3px;
+    margin-top: 4px;
+
+}
+
+form {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form label {
+
+    min-width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+form input,
+form button {
+    font-family: 'Quicksand', sans-serif;
+    height: 50px;
+}
+
+form input {
+    flex-grow: 1;
+    border: none;
+    background: #f7f1f1;
+    padding: 0 24px;
+    font-size: initial;
+}
+
+form button {
+    background: #FF6666;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 24px;
+    border: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,.3);
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 10px;
+
+}
+
+#list li {
+    display: flex;
+    margin: 0 -52px 4px;
+    padding: 20px 52px;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+}
+
+#list li.done {
+    text-decoration: line-through;
+}
+
+.togglebutton-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.togglebutton-label {
+    padding-right: 15px;
+}
+
+.todo-sort {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.todo-sort input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+
+</style>
+<body>
+            <main id="todo-list">
+
+        <form name="newform" action="store" method="get">
+        <input id="id" type="text" value=<%= id %> name="id" hidden>
+
+            <label for="newitem">Update to the todo list</label>
+
+            <input id="newitem" name="updatedtask" type="text" placeholder="Update item to Todo list">
+            <button id="additem" type="submit">Update Item</button>
+        </form>
+
+    </main>
+</body>
+</html>
