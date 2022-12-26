@@ -12,32 +12,45 @@ This project has been developed using the following technologies:
 
 
 # OUTPUT
-![image](https://user-images.githubusercontent.com/47104889/209429819-4b0c5c65-f386-44c4-908f-b4c3235b02b3.png)
+![image](https://user-images.githubusercontent.com/47104889/209511710-a8260205-3818-4e79-93cb-cbade8901dcf.png)
+
 
 
 
 1. Adding Tasks
-![image](https://user-images.githubusercontent.com/47104889/209429880-46ff5ad2-0f06-475b-aeb1-f12b48ff8fb9.png)
+![image](https://user-images.githubusercontent.com/47104889/209512640-e092165c-7bc2-4110-9b39-09b708635fdd.png)
 
 
 2. All tab - After Completion of task - i.e completion of task2
-![image](https://user-images.githubusercontent.com/47104889/209429912-6c81e6f1-5aa3-42bb-9065-934a90c25edc.png)
- 
+![image](https://user-images.githubusercontent.com/47104889/209512733-2b6681f3-ad72-4264-963a-a9176642b57d.png)
+
 3. Active tab - after completion of task2
-![image](https://user-images.githubusercontent.com/47104889/209429962-b5216e96-d3bb-4d04-ac4e-13c19603f0b7.png)
+![image](https://user-images.githubusercontent.com/47104889/209512833-af9c628d-2082-4b22-8948-df20edfaac0b.png)
 
 4. Completed tab - after completion of task2
-![image](https://user-images.githubusercontent.com/47104889/209430000-c82ca49c-75f7-42b9-8a4c-54b79405b7cc.png)
+![image](https://user-images.githubusercontent.com/47104889/209512911-f6f72c09-6d2c-4c02-a1a9-dcd40a64bd76.png)
+
 
 5. All tab - Deleting Tasks from list - deleting task2
-![image](https://user-images.githubusercontent.com/47104889/209430047-24690d9c-f86c-4e25-9a06-f30ed847955a.png)
+![image](https://user-images.githubusercontent.com/47104889/209513084-fcebe5b3-3306-4992-ae3f-719223ffa17a.png)
+
 
 6. Completed tab - Deleting Tasks from list - deleting task2
-![image](https://user-images.githubusercontent.com/47104889/209430094-6422432c-b860-4d6b-b6c7-21a41b87ebd2.png)
+![image](https://user-images.githubusercontent.com/47104889/209513456-e29c3784-62a3-4054-bc76-a45c2fb652c6.png)
 
-7. Editing and updating task
-![image](https://user-images.githubusercontent.com/47104889/209430146-fa908df7-6ec2-4db8-9b63-838867968343.png)
-![image](https://user-images.githubusercontent.com/47104889/209430179-6bc1003e-6b8c-425e-9810-c00a9d5e6038.png)
+7. Completed tab - if all multiple completed task needs to be cleared at once, click clear all button
+![image](https://user-images.githubusercontent.com/47104889/209513856-4d40c4cb-ee89-437c-a83b-63de8b7b3208.png)
+
+![image](https://user-images.githubusercontent.com/47104889/209514048-a5e2f9e8-93a4-4af4-8d1e-8d3d7b6d7392.png)
+
+
+8. Editing and updating task
+![image](https://user-images.githubusercontent.com/47104889/209514146-26850b2c-bc27-4939-bf42-57d3d042dd54.png)
+
+![image](https://user-images.githubusercontent.com/47104889/209514221-f111a5ad-3519-407b-a415-714ab223afc1.png)
+
+![image](https://user-images.githubusercontent.com/47104889/209514314-191a3b1b-0fea-4543-8461-d97d91995c60.png)
+
 
 
 
