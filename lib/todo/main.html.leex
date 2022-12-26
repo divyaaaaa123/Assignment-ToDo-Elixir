@@ -328,13 +328,25 @@ a[type=button]{
 
     <!-- active tab on page load gets checked attribute -->
     <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-    <label for="tab1">All <span class="badge"><%= Todo.count_all %></span></label>
+    <label for="tab1">All
+    <%= if Todo.count_all != 0 do  %>
+    <span class="badge"><%= Todo.count_all %></span>
+    <% end %>
+    </label>
 
     <input type="radio" id="tab2" name="tabGroup1" class="tab">
-    <label for="tab2">Active <span class="badge"><%= Todo.count_active %></span></label>
+    <label for="tab2">Active
+    <%= if Todo.count_active != 0 do  %>
+    <span class="badge"><%= Todo.count_active %></span>
+    <% end %>
+    </label>
 
     <input type="radio" id="tab3" name="tabGroup1" class="tab">
-    <label for="tab3">Completed <span class="badge"><%= Todo.count_completed %></span></label>
+    <label for="tab3">Completed
+    <%= if Todo.count_completed != 0 do  %>
+    <span class="badge"><%= Todo.count_completed %></span>
+    <% end %>
+    </label>
 
     <div class="tab__content">
       <span style="color:black">Today I need to :</span>
