@@ -28,6 +28,14 @@ defmodule Todo.Plug do
     send_resp(conn, 200, body)
 
   end
+  get "/delete_completed" do
+    conn = Plug.Conn.fetch_query_params(conn)
+      delete_completed()
+
+    body=EEx.eval_file "lib/todo/main.html.leex"
+    send_resp(conn, 200, body)
+
+  end
   get "/active" do
     conn = Plug.Conn.fetch_query_params(conn)
  		_task = Map.fetch!(conn.params, "active")

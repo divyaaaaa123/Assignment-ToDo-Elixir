@@ -276,29 +276,32 @@ a[type=button]{
   border-radius: 6px;
 }
 
-::placeholder {
-  font-size: 10px;
+.badge {
+  background-color: #FF6666;
+  color: white;
+  padding: 1px 8px;
+  text-align: center;
+  border-radius: 20px;
 }
 </style>
 
 </head>
 <body>
 <div class="main">
- <h2> D's ToDo List</h2>
-
+ <h2> D's ToDo List </h2>
 <div class="container">
 
   <div class="tab-wrap">
 
     <!-- active tab on page load gets checked attribute -->
     <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-    <label for="tab1">All</label>
+    <label for="tab1">All <span class="badge"><%= Todo.count_all %></span></label>
 
     <input type="radio" id="tab2" name="tabGroup1" class="tab">
-    <label for="tab2">Active</label>
+    <label for="tab2">Active <span class="badge"><%= Todo.count_active %></span></label>
 
     <input type="radio" id="tab3" name="tabGroup1" class="tab">
-    <label for="tab3">Completed</label>
+    <label for="tab3">Completed <span class="badge"><%= Todo.count_completed %></span></label>
 
     <div class="tab__content">
       <span>Today I need to :</span>
@@ -310,10 +313,9 @@ a[type=button]{
         <div class="btn-group" role="group" aria-label="Basic example" >
         <%= if task.done == "incomplete" do %>
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
-        <%= else %>
+        <% else %>
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; text-decoration: line-through;color: black;"><b><%=task.task %></b></a>
-        <%= end %>
-
+        <% end %>
 
  <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
 
@@ -323,8 +325,8 @@ a[type=button]{
 
 </div>
 <br>
-              <% end %>
 
+              <% end %>
         </div>
 
 
@@ -372,7 +374,9 @@ a[type=button]{
 
 </div>
 <br>
+
               <% end %>
+              <a type="button" class="btn btn-primary" href="delete_completed"style="margin-left: 132px;"> Clear all</a>
               </div>
 
   </div>

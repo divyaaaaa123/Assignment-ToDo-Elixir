@@ -1,4 +1,4 @@
-import Ecto.Changeset
+
 import Ecto.Query
 defmodule Todo do
   def add(task) do
@@ -52,5 +52,22 @@ defmodule Todo do
             where: task.done == "complete"
     Todo.Repo.all(query)
   end
+  def delete_completed() do
+    from(task in Todo.Schema, where: task.done == "complete") |> Todo.Repo.delete_all
+  end
+  def count_all() do
+    query = from(task in Todo.Schema, select: count(task.id))
+    Todo.Repo.one(query)
 
+  end
+  def count_active() do
+    query = from(task in Todo.Schema, where: task.done == "incomplete", select: count(task.id))
+    Todo.Repo.one(query)
+
+  end
+  def count_completed() do
+    query = from(task in Todo.Schema,where: task.done == "complete", select: count(task.id))
+    Todo.Repo.one(query)
+
+  end
 end
