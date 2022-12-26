@@ -304,8 +304,8 @@ a[type=button]{
     <label for="tab3">Completed <span class="badge"><%= Todo.count_completed %></span></label>
 
     <div class="tab__content">
-      <span>Today I need to :</span>
-
+      <span style="color:black">Today I need to :</span>
+      <br/>
 			  <div id="tasks">
  <%= for task <- Todo.get_all_tasks do %>
 
@@ -376,7 +376,9 @@ a[type=button]{
 <br>
 
               <% end %>
+              <%=  if Todo.completed != [] do %>
               <a type="button" class="btn btn-primary" href="delete_completed"style="margin-left: 132px;"> Clear all</a>
+              <% end %>
               </div>
 
   </div>

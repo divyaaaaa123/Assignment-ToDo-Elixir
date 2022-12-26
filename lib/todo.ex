@@ -15,7 +15,7 @@ defmodule Todo do
   end
 
   def get_all_tasks() do
-    query = from task in Todo.Schema, order_by: [desc: task.id]
+    query = from task in Todo.Schema
     Todo.Repo.all(query)
   end
   def changeset(task , params \\ %{}) do
