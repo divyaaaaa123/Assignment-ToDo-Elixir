@@ -281,7 +281,7 @@ a[type=button]{
   color: white;
   padding: 1px 8px;
   text-align: center;
-  border-radius: 20px;
+
 }
 .arrow-container {
   width: 15px;
@@ -317,7 +317,7 @@ a[type=button]{
 }
 
 </style>
-
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="main">
@@ -352,9 +352,7 @@ a[type=button]{
       <span style="color:black">Today I need to :</span>
       <br/>
 			  <div id="tasks">
- <%= for task <- Todo.get_all_tasks do %>
-
-
+        <%= for task <- Todo.get_all_tasks do %>
         <div class="btn-group" role="group" aria-label="Basic example" >
         <%= if task.done == "incomplete" do %>
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
@@ -362,10 +360,10 @@ a[type=button]{
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; text-decoration: line-through;color: black;"><b><%=task.task %></b></a>
         <% end %>
 
- <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;"><i class="fas fa-trash"></i></a>
 
 
-					 <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;">Edit task</a>
+					 <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;"><i class="fas fa-pen"></i></a>
 
 
 </div>
@@ -397,8 +395,8 @@ a[type=button]{
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
 
 
- <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
-  <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;">Edit task</a>
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;"><i class="fas fa-trash"></i></a>
+  <a type="button" class="btn btn-primary" href="edit?id=<%= task.id %>&updatedtask=<%= task.task %>"style="float:right;"><i class="fas fa-pen"></i></a>
 
 
 </div>
@@ -427,7 +425,7 @@ a[type=button]{
         <a href="toggle?id=<%= task.id %>&status=<%= task.done %>"name="status" type="submit" value="<%=task.done %>" style="text-decoration: none; color: black;"><b><%=task.task %></b></a>
 
 
- <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;">Delete</a>
+ <a type="button" class="btn btn-primary" href="delete?delete_data=<%= task.id %>"style="float:right;"><i class="fas fa-trash"></i></a>
 
 
 
@@ -436,7 +434,7 @@ a[type=button]{
 
               <% end %>
               <%=  if Todo.completed != [] do %>
-              <a type="button" class="btn btn-primary" href="delete_completed"style="margin-left: 132px;"> Clear all</a>
+              <a type="button" class="btn btn-primary" href="delete_completed"style="margin-left: 132px;">Clear All</a>
               <% else %>
                 <br/><br/>
               <p style="color: gray; text-align: center; font-style: italic;">~~~~~ No task is completed ~~~~~ </p>
