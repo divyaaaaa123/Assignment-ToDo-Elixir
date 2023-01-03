@@ -138,10 +138,8 @@ button {
             <main id="todo-list">
 
         <form name="newform" action="store" method="get">
+        <div>Update item: <%=updatedtask%></div>
         <input id="id" type="text" value=<%= id %> name="id" hidden>
-
-            <label for="newitem">Update to the todo list</label>
-
             <input id="newitem" name="updatedtask" type="text" placeholder="Update item to Todo list">
             <button id="additem" type="submit">Update Item</button>
         </form>
