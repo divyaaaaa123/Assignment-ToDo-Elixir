@@ -4,5 +4,6 @@ defmodule Todo.Schema do
   schema "to_do" do
     field :task, :string
     field :done, :string
+    field :priority, :string
   end
 end

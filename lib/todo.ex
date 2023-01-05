@@ -1,8 +1,8 @@
 
 import Ecto.Query
 defmodule Todo do
-  def add(task) do
-    add_task = %Todo.Schema{task: task,done: "incomplete"}
+  def add(task, priority \\ "low") do
+    add_task = %Todo.Schema{task: task,done: "incomplete", priority: priority}
   Todo.Repo.insert(add_task)
 
   end
@@ -20,8 +20,8 @@ defmodule Todo do
   end
   def changeset(task , params \\ %{}) do
     task
-    |> Ecto.Changeset.cast(params , [:task,:done])
-    |> Ecto.Changeset.validate_required([:task , :done])
+    |> Ecto.Changeset.cast(params , [:task,:done,:priority])
+    |> Ecto.Changeset.validate_required([:task , :done, :priority])
   end
 
   def update( id ,task) do
@@ -30,6 +30,7 @@ defmodule Todo do
     |> changeset(%{task: task})
     |> Todo.Repo.update()
   end
+
   def toggle_status(id,status) do
     prev_task=Todo.Schema |> Todo.Repo.get(id)
     if status=="complete" do
@@ -41,7 +42,22 @@ defmodule Todo do
         |> changeset(%{done: "complete"})
         |> Todo.Repo.update()
     end
+
   end
+  def priority1(id,p) do
+    p_task=Todo.Schema |> Todo.Repo.get(id)
+    if p=="high" do
+        p_task
+        |> changeset(%{priority: "low"})
+        |> Todo.Repo.update()
+    else
+        p_task
+        |> changeset(%{priority: "high"})
+        |> Todo.Repo.update()
+    end
+
+  end
+
   def active() do
     query= from task in Todo.Schema,
             where: task.done == "incomplete"

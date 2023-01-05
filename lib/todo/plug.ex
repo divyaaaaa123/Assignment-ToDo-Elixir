@@ -60,6 +60,15 @@ defmodule Todo.Plug do
     body=EEx.eval_file "lib/todo/main.html.leex"
     send_resp(conn, 200, body)
   end
+  get "/p" do
+    conn = Plug.Conn.fetch_query_params(conn)
+ 		id = Map.fetch!(conn.params, "id")
+    p = Map.fetch!(conn.params, "p")
+    priority1(id,p)
+    body=EEx.eval_file "lib/todo/main.html.leex"
+    send_resp(conn, 200, body)
+  end
+
   get "/edit" do
 		conn = Plug.Conn.fetch_query_params(conn)
 		id = (Map.fetch!(conn.params, "id"))
@@ -72,6 +81,7 @@ defmodule Todo.Plug do
 		conn = Plug.Conn.fetch_query_params(conn)
 		id = (Map.fetch!(conn.params, "id"))
 		task = to_string(Map.fetch!(conn.params, "updatedtask"))
+
     update(id , task)
 		body=EEx.eval_file("lib/todo/main.html.leex")
     send_resp(conn, 200, body)
